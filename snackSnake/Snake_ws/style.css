@@ -6,14 +6,10 @@ body {
   height: 100vh;
   width: 100vw;
   display: flex;
+  background-color: gray;
+  font-family: Arial, sans-serif;
   justify-content: center;
   align-items: center;
-  margin: 0;
-  background-color: gray;
-
-  font-family: Arial, sans-serif;
-  display: flex;
-  height: 100vh; /* 使页面充满视口高度 */
 }
 
 /* 左侧任务栏样式 */
@@ -92,6 +88,10 @@ body {
   border: 0.25vmin solid gray;
 }
 
+.wall {
+  background-color: brown;
+  border: 0.25vmin solid gray;
+}
 
  /* 右侧展示栏 */
 .game-gallery {

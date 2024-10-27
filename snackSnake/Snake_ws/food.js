@@ -5,8 +5,10 @@ const updateFood = () => {
     if (onSnake(Food)) {
         // 改变食物位置
         // 增加蛇的长度
+        // 分数增加
         expandSnake(EXPANSION_RATE);
         Food = getRandomFoodPosition();
+        updateScoreDisplay();
     }
 }
 

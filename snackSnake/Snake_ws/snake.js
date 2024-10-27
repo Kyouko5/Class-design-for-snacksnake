@@ -1,4 +1,5 @@
-const SNAKE_SPEED = 5;
+let SNAKE_SPEED = 5;
+let PlayerScore = 0;
 
 let snakeBody = [
     {x:11, y:11},  // head
@@ -51,7 +52,12 @@ const expandSnake = (rate) => {
 }
 
 const isGameOver = () => {
-    return isSnakeOutOfBounds() || isSnakeTouchingItself();
+    if (isSnakeOutOfBounds() || isSnakeTouchingItself() || isSnakeTouchingWalls()) {
+        GameStarter = false;
+        alert("GameOver!");
+    }
+    return isSnakeOutOfBounds() || isSnakeTouchingItself() 
+            || isSnakeTouchingWalls();
 }
 
 const isSnakeOutOfBounds = () => {
@@ -66,4 +72,25 @@ const isSnakeTouchingItself = () => {
         }
     }
     return false;
+}
+
+const isSnakeTouchingWalls = () => {
+    return isTouchingWalls(snakeBody[0]);
+}
+
+
+const ResetSnake = () => {
+    snakeBody = [
+        {x:11, y:11},  // head
+        {x:11, y:10},
+        {x:11, y:9}
+    ];
+    PlayerScore = 0;
+    document.getElementById("playerScore").innerText = PlayerScore;
+    SNAKE_SPEED = document.getElementById("speed").value;
+}
+
+const updatePlayerScore = () => {
+    PlayerScore += EXPANSION_RATE * 10 * (SNAKE_SPEED/10);
+    document.getElementById("playerScore").innerText = PlayerScore;
 }
