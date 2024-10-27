@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="Snake_ws/style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Snake</title>
-    <script src="game.js" defer></script>
-    <script src="snake.js" defer></script>
+    <script src="Snake_ws/game.js" defer></script>
+    <script src="Snake_ws/snake.js" defer></script>
+    <script src="Snake_ws/inputs.js" defer></script>
+    <script src="Snake_ws/food.js" defer></script>
+    <script src="Snake_ws/grid.js" defer></script>
   </head>
 
   <body>
@@ -54,11 +57,22 @@
         <p>玩家分数：<span id="playerScore">0</span></p>
         <p>AI 分数：<span id="aiScore">0</span></p>
       </div>
-
     </div>
-    
-    <div cladd="game-container">
+
+     <!-- 中间游戏区域 -->
+    <div class="game-container">
       <div id="game-board"></div>
     </div>
+
+    <!-- 右侧展示栏 -->
+    <div class="game-gallery">
+      <h2>选择小游戏</h2>
+      <div class="game-options">
+          <button onclick="startSnakeGame()">贪吃蛇</button>
+          <button onclick="startTicTacToe()">井字棋</button>
+          <button onclick="startMemoryGame()">五子棋</button>
+          <!-- 添加更多按钮 -->
+      </div>
+  </div>
   </body>
 </html>
