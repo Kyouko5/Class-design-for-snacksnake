@@ -1,5 +1,3 @@
-/* No need to edit this file! */
-
 
 body {
   background-image: url("Sunset.jpg");
@@ -17,6 +15,7 @@ body {
   font-family: Arial, sans-serif;
   justify-content: center;
   align-items: center;
+  margin: 0;
 }
 
 /* 左侧任务栏样式 */

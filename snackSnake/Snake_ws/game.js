@@ -11,10 +11,12 @@ const main = (currenttTime) => {
   // 表示前一帧渲染的结束时间
   window.requestAnimationFrame(main);
 
+  // 计算前后两帧的相隔时间
   const secondsSinceLastRender = (currenttTime - lastRenderTime)/1000;
   if (secondsSinceLastRender < 1 / SNAKE_SPEED){
     return;
   }
+  // 更新最新的刷新时刻
   lastRenderTime = currenttTime;
 
   update();
