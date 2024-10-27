@@ -22,6 +22,12 @@ const level2Walls = [
     { x: 20, y: 25 }, { x: 20, y: 26 }, { x: 20, y: 27 }, { x: 20, y: 28 }, { x: 20, y: 29 },
     { x: 20, y: 30 }, { x: 20, y: 31 }, { x: 20, y: 32 }, { x: 20, y: 33 }, { x: 20, y: 34 },
 ];
+for (let i = 1; i <= 40; i++) {
+    level2Walls.push({ x: i, y: 1 });       // 顶部
+    level2Walls.push({ x: i, y: 40 });      // 底部
+    level2Walls.push({ x: 1, y: i });       // 左侧
+    level2Walls.push({ x: 40, y: i });      // 右侧
+}
 
 const level3Walls = [
     // 外圈
@@ -48,6 +54,13 @@ const level3Walls = [
     { x: 30, y: 5 }, { x: 30, y: 6 }, { x: 30, y: 7 }, { x: 30, y: 8 },
     { x: 31, y: 8 }, { x: 32, y: 8 }, { x: 33, y: 8 },
 ];
+
+for (let i = 1; i <= 40; i++) {
+    level3Walls.push({ x: i, y: 1 });       // 顶部
+    level3Walls.push({ x: i, y: 40 });      // 底部
+    level3Walls.push({ x: 1, y: i });       // 左侧
+    level3Walls.push({ x: 40, y: i });      // 右侧
+}
 
 const levels = {
     1: level1Walls,

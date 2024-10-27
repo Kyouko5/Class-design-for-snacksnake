@@ -2,7 +2,14 @@
 
 
 body {
-  background-image: url("Backgroud.jpg");
+  background-image: url("Sunset.jpg");
+
+   /* Centering on image`s center*/
+   background-position-y: center;
+   background-position-x: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+
   height: 100vh;
   width: 100vw;
   display: flex;
