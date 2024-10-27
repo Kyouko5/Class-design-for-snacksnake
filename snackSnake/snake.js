@@ -1,4 +1,5 @@
 const SNAKE_SPEED = 5;
+
 const snakeBody = [
     {x:11, y:11},  // head
     {x:11, y:10},
@@ -10,8 +11,21 @@ const updateSnake = () => {
         // 往下传递
         snakeBody[i+1] = {...snakeBody[i]};
     }
+
+    snakeBody[0].x += 0;
+    snakeBody[0].y += 1;
+
 }
 
-const drawSnake = () => {
+const drawSnake = (gameBoard) => {
+    for (let i = 0; i <= snakeBody.length; i++) {
+        const segment = snakeBody[i];
+        const snakeElement = document.createElement('div');
 
+        snakeElement.style.gridRowStart = segment.x;
+        snakeElement.style.gridColumnStart = segment.y;
+        snakeElement.classList.add("snake");
+        
+        gameBoard.appendChild(snakeElement);
+    }
 }

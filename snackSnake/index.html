@@ -7,28 +7,58 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Snake</title>
     <script src="game.js" defer></script>
+    <script src="snake.js" defer></script>
   </head>
 
   <body>
     <div class="sidebar">
+      <!-- 游戏设置部分 -->
+      <div class="settings-section">
       <h2>游戏设置</h2>
         
       <!-- 游戏速度控制 -->
       <div class="parameter">
           <label for="speed">速度 (ms):</label>
-          <input type="range" id="speed" name="speed" min="50" max="500" value="200">
+          <input type="range" id="speed" name="speed" min="50" max="500" value="200"/>
       </div>
 
       <!-- 贪吃蛇大小控制 -->
       <div class="parameter">
           <label for="snake-size">贪吃蛇大小:</label>
-          <input type="number" id="snake-size" name="snake-size" min="10" max="50" value="20">
+          <input type="number" id="snake-size" name="snake-size" min="10" max="50" value="20"/>
+      </div>
+
+      <!-- 贪吃蛇AI选择 -->
+      <div class="parameter">
+        <label for="snake-AI">贪吃蛇AI对战:</label>
+        <label>
+          <input type="checkbox" id="aiToggle" onchange="toggleAI()"> 启用 AI 对战
+      </label>
+      <label>
+        难度：
+        <select id="aiDifficulty" onchange="setAIDifficulty()">
+            <option value="easy">简单</option>
+            <option value="medium">中等</option>
+            <option value="hard">困难</option>
+        </select>
+      </label>
       </div>
 
       <!-- 开始游戏按钮 -->
       <button class="start-button" onclick="startGame()">开始游戏</button>
+      </div>
+
+    <!-- 分数显示部分 -->
+      <div class="score-section">
+        <h3>分数</h3>
+        <p>玩家分数：<span id="playerScore">0</span></p>
+        <p>AI 分数：<span id="aiScore">0</span></p>
+      </div>
+
     </div>
     
-    <div id="game-board" class="game-container"></div>
+    <div cladd="game-container">
+      <div id="game-board"></div>
+    </div>
   </body>
 </html>

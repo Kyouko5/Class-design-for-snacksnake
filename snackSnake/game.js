@@ -1,5 +1,5 @@
 let lastRenderTime = 0;
-
+const gameBoard = document.getElementById("game-board");
 
 const main = (currenttTime) => {
   // callback: 当需要更新动画以进行下一次重新绘制时，将调用此函数。此回调函数传递一个参数timespan
@@ -27,5 +27,5 @@ const update = () => {
 };
 
 const draw = () => {
-    drawSnake();
+    drawSnake(gameBoard);
 };

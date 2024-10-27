@@ -7,6 +7,7 @@
 }
 
 body {
+  background-image: url("Backgroud.jpg");
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -24,6 +25,7 @@ body {
 .sidebar {
   width: 30%; /* 左侧栏宽度 */
   background-color: #f4f4f4;
+  opacity: 75%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -46,11 +48,28 @@ body {
   margin-bottom: 5px;
 }
 
+/* 速度控制和大小控制 */
 .sidebar .parameter input[type="range"],
 .sidebar .parameter input[type="number"] {
   width: 100%;
 }
 
+/* AI难度选择栏样式 */
+.sidebar select, 
+.sidebar input[type="checkbox"] {
+    margin-top: 5px;
+    padding: 8px;
+    font-size: 0.9em;
+}
+
+.sidebar .score-section, 
+.sidebar .settings-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
 
 /* 右侧游戏界面 */
 .game-container {
@@ -63,6 +82,7 @@ body {
 
 #game-board {
   background-color: black;
+  opacity: 75%;
   width: 100vmin;
   height: 100vmin;
   display: grid;
