@@ -1,4 +1,4 @@
-let inputDirection = {x: 0, y: 1};
+let inputDirection = {x: 1, y: 0};
 
 window.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowUp' && inputDirection.x!== 1) {

@@ -9,6 +9,10 @@ const updateFood = () => {
         expandSnake(EXPANSION_RATE);
         Food = getRandomFoodPosition();
         updateScoreDisplay();
+    } else if (onAISnake(Food)) {
+        expandAISnake(EXPANSION_RATE);
+        Food = getRandomFoodPosition();
+        updateScoreDisplay();
     }
 }
 

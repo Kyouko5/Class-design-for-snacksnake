@@ -36,7 +36,7 @@ const update = () => {
 const draw = () => {
     gameBoard.innerHTML = "";
     drawSnake(gameBoard);
-    updateAISnake(gameBoard);
+    drawAISnake(gameBoard);
     drawFood(gameBoard);
     drawWall(gameBoard);
 };

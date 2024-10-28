@@ -31,3 +31,23 @@ const drawAISnake = (gameBoard) => {
         gameBoard.appendChild(snakeElement);
     }
 }
+
+const onAISnake = (foodPosition) => {
+    for (let i = 0; i < AIsnakeBody.length; i++) {
+        if(equalPositions(foodPosition, AIsnakeBody[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+const expandAISnake = (rate) => {
+    for (let i = 0; i < rate; i++) {
+        AIsnakeBody.push({...AIsnakeBody[AIsnakeBody.length - 1]});
+    }
+}
+
+const updateAIrScore = () => {
+    AIScore += EXPANSION_RATE * 10 * (SNAKE_SPEED/10);
+    document.getElementById("aiScore").innerText = AIScore;
+}

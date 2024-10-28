@@ -1,4 +1,3 @@
-let AIScore = 0;
 
 function startGame () {
     // 将开始游戏按钮设为程序入口
@@ -13,6 +12,7 @@ function selectLevel() {
 
 function updateScoreDisplay() {
     updatePlayerScore();
+    updateAIScore();
 }
 
 const updateParameters = () => {
