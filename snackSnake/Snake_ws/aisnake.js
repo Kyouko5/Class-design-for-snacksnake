@@ -13,7 +13,9 @@ const updateAISnake = () => {
         AIsnakeBody[i+1] = {...AIsnakeBody[i]};
     }
 
-     const updateDirection = moveAISnake();
+    // 有个问题是：其实并不需要每次更新都计算一次ai的路径？待解决
+    // 驳回，需要每次更新，因为蛇身体是每次都在移动的
+    const updateDirection = moveAISnake();
     AIsnakeBody[0] = updateDirection;
 
     //const updateDirection = SimpleAIDirection();

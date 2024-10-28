@@ -59,6 +59,7 @@ const getNeighbors = (node) => {
     for (let dir of directions) {
         let x = node.x + dir.x;
         let y = node.y + dir.y;
+        // 不可通行点直接不算成邻居
         if (x > 1 && x < GRID_SIZE-1 && y > 1 && y < GRID_SIZE-1) {
             neighbors.push({ x, y });
         }
@@ -79,13 +80,15 @@ const aStar = (start, goal) =>{
         openSet.sort((a, b) => fScore[a.x][a.y] - fScore[b.x][b.y]);
         let current = openSet.shift();
 
-        // 找到路径，回溯路径
+        // 抵达终点，回溯路径
         if (current.x === goal.x && current.y === goal.y) {
             let path = [];
+            // 回溯路径，每个节点的前驱都记录在cameFrom中
             while (current) {
                 path.push(current);
                 current = cameFrom[`${current.x},${current.y}`];
             }
+            // 因为在上面的循环中，path是从终点回溯到起点，需要反转一下
             return path.reverse(); // 返回路径
         }
 
