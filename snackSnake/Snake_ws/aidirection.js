@@ -19,6 +19,8 @@ const SimpleAIDirection = () => {
 
 
 /*
+由 B22042127袁非 完成根据A* 算法的ai逻辑控制
+
 A* 算法:
 G 值：起点到当前点的实际代价
 H 值：当前点到目标的估计代价
@@ -72,7 +74,7 @@ const getNeighbors = (node) => {
 }
 
 const aStar = (start, goal) =>{
-    // 对象数组，存放节点，格式为  [{node1.x, node1.y},{node2.x, node2.y}, ...]
+    // 对象数组，存放节点，格式为  [{x:1, y:1},{x:2, y:2}, ...]
     let openSet = [start];
 
     /*
@@ -147,6 +149,8 @@ const moveAISnake = () => {
     if (path && path.length > 1) {
         // AIsnakeBody.unshift(path[1]); // 移动到路径的下一个节点
         // AIsnakeBody.pop(); // 删除尾部，使蛇长度保持不变
+        
+        // path是一个对象数组，需要取出其中第一个坐标
         return path[1]; // 新位置
     } else {
         console.log("没有路径可行！AI 停止移动");

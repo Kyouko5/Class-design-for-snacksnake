@@ -47,10 +47,11 @@
           <input type="checkbox" id="aiToggle" onchange="toggleAI()"> 启用 AI 对战
       </label>
       <label>
-        AI难度(未实现，已经打不过了):
+        AI路径算法:
         <select id="aiDifficulty" onchange="setAIDifficulty()">
-            <option value="easy">简单</option>
-            <option value="medium">中等</option>
+            <option value="1">A*算法</option>
+            <option value="2">贪婪算法</option>
+            <option value="3">BFS & DFS</option>
         </select>
       </label>
       </div>

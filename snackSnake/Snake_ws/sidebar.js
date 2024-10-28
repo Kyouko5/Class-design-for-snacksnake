@@ -10,6 +10,11 @@ const selectLevel = () => {
     walls = levels[level];
 }
 
+const setAIDifficulty = () => {
+    const difficulty = document.getElementById("aiDifficulty").value;
+    AIDifficulty = difficulties[difficulty];
+}
+
 const updateScoreDisplay = () => {
     updatePlayerScore();
     updateAIScore();
