@@ -1,16 +1,16 @@
 
-function startGame () {
+const startGame =  () => {
     // 将开始游戏按钮设为程序入口
     updateParameters();
     window.requestAnimationFrame(main);
 }
 
-function selectLevel() {
+const selectLevel = () => {
     const level = document.getElementById("levelSelect").value;
     walls = levels[level];
 }
 
-function updateScoreDisplay() {
+const updateScoreDisplay = () => {
     updatePlayerScore();
     updateAIScore();
 }
@@ -22,9 +22,19 @@ const updateParameters = () => {
     selectLevel();
     ResetSnake();
     ResetAISnake();
-    ResetLevel();
     Food = getRandomFoodPosition();
 }
 
+const toggleAI = () => {
+    document.getElementById("aiToggle").checked? enableAI() : disableAI();
+}
+
+const enableAI = () => {
+    AIenabled = true;
+}
+
+const disableAI = () => {
+    AIenabled = false;
+}
 
 

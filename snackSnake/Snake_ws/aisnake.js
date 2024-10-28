@@ -90,6 +90,7 @@ const ResetAISnake = () => {
     {x:11, y:18}
     ];
     AIScore = 0;
+    aiDirection = {x: 1, y: 0}
     document.getElementById("aiScore").innerText = AIScore;
     SNAKE_SPEED = document.getElementById("speed").value;
 }

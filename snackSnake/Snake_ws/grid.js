@@ -5,8 +5,8 @@ let grid = Array.from(
     );
 
 const getRandomPosition = () => {
-    return {x:Math.floor(Math.random() * (GRID_SIZE) + 1), 
-            y: Math.floor(Math.random() * (GRID_SIZE) + 1)
+    return {x:Math.floor(Math.random() * (GRID_SIZE-3)+1), 
+            y: Math.floor(Math.random() * (GRID_SIZE-3)+1)
         };
 }
 

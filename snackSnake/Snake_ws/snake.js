@@ -86,6 +86,7 @@ const ResetSnake = () => {
         {x:11, y:9}
     ];
     PlayerScore = 0;
+    inputDirection = {x: 1, y: 0}
     document.getElementById("playerScore").innerText = PlayerScore;
     SNAKE_SPEED = document.getElementById("speed").value;
 }

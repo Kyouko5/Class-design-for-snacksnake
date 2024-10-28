@@ -1,6 +1,7 @@
 let lastRenderTime = 0;
 let gameOver = false;
 let GameStarter = false;
+let AIenabled = false;
 const gameBoard = document.getElementById("game-board");
 
 const main = (currenttTime) => {
@@ -30,14 +31,18 @@ const update = () => {
     gameOver = isGameOver();
     gameOver = isAIGameOver();
     updateSnake();
-    updateAISnake();
+    if(AIenabled){
+      updateAISnake();
+    }
     updateFood();
 };
 
 const draw = () => {
     gameBoard.innerHTML = "";
     drawSnake(gameBoard);
-    drawAISnake(gameBoard);
+    if(AIenabled){
+      drawAISnake(gameBoard);
+    }
     drawFood(gameBoard);
     drawWall(gameBoard);
 };
