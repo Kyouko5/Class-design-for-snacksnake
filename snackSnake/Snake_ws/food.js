@@ -28,7 +28,7 @@ const drawFood = (gameBoard) => {
 
 const getRandomFoodPosition = () => {
     let newFoodPosition = getRandomPosition();
-    while(onSnake(newFoodPosition) || isTouchingWalls(newFoodPosition)){
+    while(onSnake(newFoodPosition) || isTouchingWalls(newFoodPosition) || onAISnake(newFoodPosition)){
         newFoodPosition = getRandomPosition();
     }
     return newFoodPosition;
