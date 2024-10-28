@@ -89,6 +89,11 @@ body {
   border: 0.25vmin solid black;
 }
 
+.aisnake {
+  background-color: purple;
+  border: 0.25vmin solid black;
+}
+
 .food {
   background-color: rgb(10, 6, 241);
   border: 0.25vmin solid gray;

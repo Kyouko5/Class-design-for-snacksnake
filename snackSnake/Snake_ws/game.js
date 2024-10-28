@@ -29,12 +29,14 @@ const main = (currenttTime) => {
 const update = () => {
     gameOver = isGameOver();
     updateSnake();
+    updateAISnake();
     updateFood();
 };
 
 const draw = () => {
     gameBoard.innerHTML = "";
     drawSnake(gameBoard);
+    updateAISnake(gameBoard);
     drawFood(gameBoard);
     drawWall(gameBoard);
 };
