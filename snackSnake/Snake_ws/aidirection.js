@@ -20,13 +20,17 @@ const SimpleAIDirection = () => {
 
 /*
 A* 算法:
+G 值：起点到当前点的实际代价
+H 值：当前点到目标的估计代价
+F 值： F = G + H，用于决定优先搜索的节点
+
 -- 初始化：
 起点添加到‘开放列表’，表示待处理的节点
 
 -- 遍历开放列表：
 从开放列表中取出 F 值最小的节点，将其设为 当前节点
 若当前节点是目标点，路径找到，退出循环
-否则进入第三步处理其相邻节点
+否则进入第三步处理其相邻节点 
 
 -- 处理当前节点的相邻节点：
 获取当前节点的相邻节点（上下左右四个方向）
@@ -68,13 +72,25 @@ const getNeighbors = (node) => {
 }
 
 const aStar = (start, goal) =>{
+    // 对象数组，存放节点，格式为  [{node1.x, node1.y},{node2.x, node2.y}, ...]
     let openSet = [start];
+
+    /*
+      对象，用于记录路径的来源节点，也就是每个节点的前驱节点。
+      键设置为 ${neighbor.x},${neighbor.y}：这是节点的坐标，将其格式化为字符串，
+      例如 "5,10",作为 cameFrom 对象的键,这种字符串化的坐标用于唯一标识网格中的每个节点
+    */
     let cameFrom = {};
+
+    // 二维数组：记录G值: 起点到当前点的实际代价
     let gScore = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(Infinity));
     gScore[start.x][start.y] = 0;
+
+    // 二维数组：F 值： F = G + H，用于决定优先搜索的节点
     let fScore = Array.from({ length: GRID_SIZE }, () => Array(GRID_SIZE).fill(Infinity));
     fScore[start.x][start.y] = heuristic(start, goal);
 
+    // A*算法主循环
     while (openSet.length > 0) {
         // 每次从 openSet 中取出 F 值最小的节点作为当前节点
         openSet.sort((a, b) => fScore[a.x][a.y] - fScore[b.x][b.y]);
