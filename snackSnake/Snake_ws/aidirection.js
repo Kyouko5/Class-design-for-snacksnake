@@ -18,7 +18,31 @@ const SimpleAIDirection = () => {
 }
 
 
-// A* 算法会计算从蛇头到食物的路径。使用曼哈顿距离作为启发函数，保证 AI 尽可能找到最短路径。
+/*
+A* 算法:
+-- 初始化：
+起点添加到‘开放列表’，表示待处理的节点
+
+-- 遍历开放列表：
+从开放列表中取出 F 值最小的节点，将其设为 当前节点
+若当前节点是目标点，路径找到，退出循环
+否则进入第三步处理其相邻节点
+
+-- 处理当前节点的相邻节点：
+获取当前节点的相邻节点（上下左右四个方向）
+若相邻节点不可通行（例如蛇身体或墙壁），则跳过
+对每个相邻节点计算 G、H 和 F 值，决定该节点的最优路径
+
+-- 更新路径：
+若相邻节点在开放列表中，比较新路径的 G 值是否更小，若是则更新路径
+若相邻节点不在开放列表，将其加入并标记路径来源（即 cameFrom 记录前驱节点）
+
+-- 重复：
+重复以上步骤，直到找到目标或开放列表为空
+*/
+
+// 使用曼哈顿距离作为启发函数，保证 AI 尽可能找到最短路径
+// 也可以使用欧几里得距离，曼哈顿距离比较快捷
 const heuristic = (a, b) => {
     return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
 }
@@ -51,6 +75,7 @@ const aStar = (start, goal) =>{
     fScore[start.x][start.y] = heuristic(start, goal);
 
     while (openSet.length > 0) {
+        // 每次从 openSet 中取出 F 值最小的节点作为当前节点
         openSet.sort((a, b) => fScore[a.x][a.y] - fScore[b.x][b.y]);
         let current = openSet.shift();
 
@@ -66,13 +91,25 @@ const aStar = (start, goal) =>{
 
         let neighbors = getNeighbors(current);
         for (let neighbor of neighbors) {
-            if (grid[neighbor.x][neighbor.y] === 1) continue; // 跳过不可通行节点
+            // 跳过不可通行节点
+            if (grid[neighbor.x][neighbor.y] === 1) continue; 
+
             let tentative_gScore = gScore[current.x][current.y] + 1;
 
+            // 若新路径的 G 值较小，则更新该节点路径
+            // 对于开始阶段的话，gScore中都是无限大，第一次都是直接赋值，后面复杂了才会进行同一节点的更新
             if (tentative_gScore < gScore[neighbor.x][neighbor.y]) {
+                // ！！回溯路径纪录
+                // path A->B ---> cameFrom[B] == A
                 cameFrom[`${neighbor.x},${neighbor.y}`] = current;
+
+                // 计算 G、H、F 值
+                // 这里是进行G值和F值的更新，因为不管在不在开放列表里都要更新
                 gScore[neighbor.x][neighbor.y] = tentative_gScore;
                 fScore[neighbor.x][neighbor.y] = tentative_gScore + heuristic(neighbor, goal);
+
+                // 若邻居不在开放列表中，且新路径的 G 值较小，则添加该节点路径
+                // 如果已经在了，只更新G值和F值就够了，避免重复访问
                 if (!openSet.some(node => node.x === neighbor.x && node.y === neighbor.y)) {
                     openSet.push(neighbor);
                 }
