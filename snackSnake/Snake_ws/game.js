@@ -28,6 +28,7 @@ const main = (currenttTime) => {
 
 const update = () => {
     gameOver = isGameOver();
+    gameOver = isAIGameOver();
     updateSnake();
     updateAISnake();
     updateFood();

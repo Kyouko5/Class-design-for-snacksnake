@@ -1,11 +1,11 @@
 let walls = [];
 
 const level1Walls = [];
-for (let i = 1; i <= 40; i++) {
+for (let i = 1; i < GRID_SIZE; i++) {
     level1Walls.push({ x: i, y: 1 });       // 顶部
-    level1Walls.push({ x: i, y: 40 });      // 底部
+    level1Walls.push({ x: i, y: GRID_SIZE-1 });      // 底部
     level1Walls.push({ x: 1, y: i });       // 左侧
-    level1Walls.push({ x: 40, y: i });      // 右侧
+    level1Walls.push({ x: GRID_SIZE-1, y: i });      // 右侧
 }
 
 const level2Walls = [
@@ -55,11 +55,11 @@ const level3Walls = [
     { x: 31, y: 8 }, { x: 32, y: 8 }, { x: 33, y: 8 },
 ];
 
-for (let i = 1; i <= 40; i++) {
+for (let i = 1; i < GRID_SIZE; i++) {
     level3Walls.push({ x: i, y: 1 });       // 顶部
-    level3Walls.push({ x: i, y: 40 });      // 底部
+    level3Walls.push({ x: i, y: GRID_SIZE-1 });      // 底部
     level3Walls.push({ x: 1, y: i });       // 左侧
-    level3Walls.push({ x: 40, y: i });      // 右侧
+    level3Walls.push({ x: GRID_SIZE-1, y: i });      // 右侧
 }
 
 const levels = {

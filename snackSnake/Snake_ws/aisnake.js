@@ -13,9 +13,12 @@ const updateAISnake = () => {
         AIsnakeBody[i+1] = {...AIsnakeBody[i]};
     }
 
-    const updateDirection = SimpleAIDirection();
-    AIsnakeBody[0].x += updateDirection.x;
-    AIsnakeBody[0].y += updateDirection.y;
+     const updateDirection = moveAISnake();
+    AIsnakeBody[0] = updateDirection;
+
+    //const updateDirection = SimpleAIDirection();
+    //AIsnakeBody[0].x += updateDirection.x;
+    //AIsnakeBody[0].y += updateDirection.y;
 
 }
 
@@ -87,6 +90,6 @@ const ResetAISnake = () => {
     {x:11, y:18}
     ];
     AIScore = 0;
-    document.getElementById("aiScore").innerText = AIrScore;
+    document.getElementById("aiScore").innerText = AIScore;
     SNAKE_SPEED = document.getElementById("speed").value;
 }

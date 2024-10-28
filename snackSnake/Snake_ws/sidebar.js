@@ -19,8 +19,9 @@ const updateParameters = () => {
     // 刷新两个游戏启动暂停参数
     GameStarter = true;
     gameOver = false;
-    selectLevel()
+    selectLevel();
     ResetSnake();
+    ResetAISnake();
     ResetLevel();
     Food = getRandomFoodPosition();
 }
