@@ -54,7 +54,7 @@ const expandSnake = (rate) => {
 const isGameOver = () => {
     if (isSnakeOutOfBounds() || isSnakeTouchingItself() || isSnakeTouchingWalls()) {
         GameStarter = false;
-        alert("GameOver!");
+        alert("YOU GameOver!");
     }
     return isSnakeOutOfBounds() || isSnakeTouchingItself() 
             || isSnakeTouchingWalls();

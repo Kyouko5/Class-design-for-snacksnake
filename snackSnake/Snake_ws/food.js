@@ -8,11 +8,11 @@ const updateFood = () => {
         // 分数增加
         expandSnake(EXPANSION_RATE);
         Food = getRandomFoodPosition();
-        updateScoreDisplay();
+        updatePlayerScore();
     } else if (onAISnake(Food)) {
         expandAISnake(EXPANSION_RATE);
         Food = getRandomFoodPosition();
-        updateScoreDisplay();
+        updateAIScore();
     }
 }
 

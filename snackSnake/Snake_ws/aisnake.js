@@ -47,7 +47,46 @@ const expandAISnake = (rate) => {
     }
 }
 
-const updateAIrScore = () => {
+const updateAIScore = () => {
     AIScore += EXPANSION_RATE * 10 * (SNAKE_SPEED/10);
     document.getElementById("aiScore").innerText = AIScore;
+}
+
+const isAIGameOver = () => {
+    if (isAISnakeOutOfBounds() || isAISnakeTouchingItself() || isAISnakeTouchingWalls()) {
+        GameStarter = false;
+        alert("AIGameOver!");
+    }
+    return isAISnakeOutOfBounds() || isAISnakeTouchingItself() 
+            || isAISnakeTouchingWalls();
+}
+
+const isAISnakeOutOfBounds = () => {
+    return isOutOfBounds(AIsnakeBody[0]);
+}
+
+const isAISnakeTouchingItself = () => {
+    const AIsnakehead = AIsnakeBody[0];
+    for (let i = 1; i < AIsnakeBody.length; i++) {
+        if(equalPositions(AIsnakehead, AIsnakeBody[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+
+const isAISnakeTouchingWalls = () => {
+    return isTouchingWalls(AIsnakeBody[0]);
+}
+
+
+const ResetAISnake = () => {
+    AIsnakeBody = [
+        {x:11, y:20},  // head
+    {x:11, y:19},
+    {x:11, y:18}
+    ];
+    AIScore = 0;
+    document.getElementById("aiScore").innerText = AIrScore;
+    SNAKE_SPEED = document.getElementById("speed").value;
 }
