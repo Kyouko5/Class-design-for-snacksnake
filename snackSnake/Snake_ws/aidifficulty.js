@@ -8,8 +8,8 @@
 */
 
 const difficulties = {
-    1: aStarPath,   // 已实现
-    2: Greedypath,
+    1: aStar,   // 已实现
+    2: Dijkstra,
     3: BFS_DFS
 }
 
