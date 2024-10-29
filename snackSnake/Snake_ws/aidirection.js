@@ -45,6 +45,8 @@ F 值： F = G + H，用于决定优先搜索的节点
 
 -- 重复：
 重复以上步骤，直到找到目标或开放列表为空
+
+--？？ 事实上我不确定是否要加入闭合列表 ？？
 */
 
 // 使用曼哈顿距离作为启发函数，保证 AI 尽可能找到最短路径
@@ -74,8 +76,11 @@ const getNeighbors = (node) => {
 }
 
 const aStar = (start, goal) =>{
-    // 对象数组，存放节点，格式为  [{x:1, y:1},{x:2, y:2}, ...]
+    // 开放列表：对象数组，存放节点，格式为  [{x:1, y:1},{x:2, y:2}, ...]
     let openSet = [start];
+
+    // 闭合列表：记录已经访问过的节点，避免重复搜索
+    let closedSet = []; 
 
     /*
       对象，用于记录路径的来源节点，也就是每个节点的前驱节点。
@@ -110,14 +115,19 @@ const aStar = (start, goal) =>{
             return path.reverse(); // 返回路径
         }
 
+        // 将当前节点添加到闭合列表
+        closedSet.push(current);
+
         let neighbors = getNeighbors(current);
         for (let neighbor of neighbors) {
-            // 跳过不可通行节点
-            if (grid[neighbor.x][neighbor.y] === 1) continue; 
+            // 跳过不可通行节点和已经访问过得点
+            if (grid[neighbor.x][neighbor.y] === 1 
+                || closedSet.some(node => node.x === neighbor.x && node.y === neighbor.y)
+            ) continue; 
 
             let tentative_gScore = gScore[current.x][current.y] + 1;
 
-            // 若新路径的 G 值较小，则更新该节点路径
+            // 若新路径的 G 值较小，则更新该节点路径，发现更优路径
             // 对于开始阶段的话，gScore中都是无限大，第一次都是直接赋值，后面复杂了才会进行同一节点的更新
             if (tentative_gScore < gScore[neighbor.x][neighbor.y]) {
                 // ！！回溯路径纪录
