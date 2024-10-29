@@ -66,7 +66,7 @@ const getNeighbors = (node) => {
     for (let dir of directions) {
         let x = node.x + dir.x;
         let y = node.y + dir.y;
-        // 不可通行点直接不算成邻居
+        // 边界不算成邻居
         if (x > 1 && x < GRID_SIZE-1 && y > 1 && y < GRID_SIZE-1) {
             neighbors.push({ x, y });
         }
