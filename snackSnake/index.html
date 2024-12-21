@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="Snake_ws/style.css" />
+    <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Snake</title>
-    <script src="Snake_ws/game.js" defer></script>
-    <script src="Snake_ws/snake.js" defer></script>
-    <script src="Snake_ws/inputs.js" defer></script>
-    <script src="Snake_ws/food.js" defer></script>
-    <script src="Snake_ws/grid.js" defer></script>
-    <script src="Snake_ws/sidebar.js" defer></script>
-    <script src="Snake_ws/levels.js" defer></script>
-    <script src="Snake_ws/aisnake.js" defer></script>
-    <script src="Snake_ws/aidirection.js" defer></script>
+    <script src="assets/game.js" defer></script>
+    <script src="assets/snake.js" defer></script>
+    <script src="assets/keyboard.js" defer></script>
+    <script src="assets/food.js" defer></script>
+    <script src="assets/grid.js" defer></script>
+    <script src="assets/sidebar.js" defer></script>
+    <script src="assets/levels.js" defer></script>
+    <script src="assets/aisnake.js" defer></script>
+    <script src="assets/aidifficulty.js" defer></script>
+    <script src="assets/aidirection.js" defer></script>
+    <script src="assets/aidirection_t.js" defer></script>
+    <script src="assets/bigfood.js" defer></script>
   </head>
 
   <body>
@@ -25,8 +28,11 @@
         
       <!-- 游戏速度控制 -->
       <div class="parameter">
-          <label for="speed">速度 (ms):</label>
+          <!-- 标签和input绑定 -->
+          <label for="snakespeed">速度 (ms):</label>
           <input type="range" id="speed" name="speed" min="1" max="20"/>
+          <label for="aisnakespeed">AI速度 (ms):</label>
+          <input type="range" id="aisnakespeed" name="aispeed" min="1" max="20"/>
       </div>
 
       <!-- 贪吃蛇大小控制 -->
@@ -51,14 +57,18 @@
         <select id="aiDifficulty" onchange="setAIDifficulty()">
             <option value="1">A*算法</option>
             <option value="2">贪婪算法</option>
-            <option value="3">BFS & DFS</option>
+            <option value="3">BFS </option>
+            <option value="4">DFS </option>
         </select>
       </label>
       </div>
 
-      <!-- 开始游戏按钮 -->
-      <button class="start-button" onclick="startGame()">开始游戏</button>
+      <!-- 开始/重置游戏按钮 -->
+      <button class="start-button" onclick="startGame()">开始游戏/重置游戏</button>
+      <!-- 暂停/继续游戏按钮 -->
+       <button class="pause-button" onclick="pauseorContinueGame()">暂停游戏/继续游戏</button>
       </div>
+      
 
     <!-- 分数显示部分 -->
       <div class="score-section">
@@ -78,8 +88,8 @@
       <h2>选择小游戏</h2>
       <div class="game-options">
           <button onclick="startSnakeGame()">贪吃蛇</button>
-          <button onclick="startTicTacToe()">井字棋</button>
-          <button onclick="startMemoryGame()">五子棋</button>
+          <button onclick="startTicTacToe()">待开发</button>
+          <button onclick="startMemoryGame()">待开发</button>
           <!-- 添加更多按钮 -->
       </div>
   </div>
